@@ -34,7 +34,7 @@ export class PropertyController {
         // whitelist: true,
         //   forbidNonWhitelisted: true,
         groups: ['create'],
-        always: true, 
+        always: true,
       }),
     )
     body: CreatePorpertyDto,
@@ -43,6 +43,20 @@ export class PropertyController {
   }
   @Patch()
   update(
+    @Body(
+      new ValidationPipe({
+        // whitelist: true,
+        // forbidNonWhitelisted: true,
+        groups: ['update'],
+        always: true,
+      }),
+    )
+    body: CreatePorpertyDto,
+  ) {
+    return body;
+  }
+  @Patch(':id')
+  updateById(
     @Body(
       new ValidationPipe({
         // whitelist: true,
